@@ -3,48 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Fotográfico Profesional</title>
+    <title>Estudio Fotográfico Gsisioso</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
+            --neon-pink: #ff2d95;
+            --neon-blue: #0ff0fc;
+            --neon-green: #00ff66;
+            --neon-yellow: #ffef0f;
+            --neon-purple: #bf00ff;
+            --dark-bg: #0a0a0a;
+            --light-text: #ffffff;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
+            color: var(--light-text);
+            background-color: var(--dark-bg);
             padding-top: 76px;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
         }
         
         .navbar {
-            background-color: rgba(44, 62, 80, 0.7) !important;
+            background-color: rgba(10, 10, 10, 0.8) !important;
             backdrop-filter: blur(10px);
             transition: background-color 0.3s ease;
             padding: 20px 0;
+            border-bottom: 1px solid var(--neon-pink);
         }
         
         .navbar.navbar-scrolled {
-            background-color: rgba(44, 62, 80, 0.95) !important;
+            background-color: rgba(10, 10, 10, 0.95) !important;
             padding: 15px 0;
         }
         
         .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-weight: 900;
             font-size: 1.8rem;
-            color: white !important;
+            color: var(--neon-pink) !important;
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
         }
         
         .nav-link {
@@ -52,10 +60,26 @@
             margin: 0 10px;
             color: rgba(255, 255, 255, 0.8) !important;
             transition: color 0.3s ease;
+            position: relative;
         }
         
         .nav-link:hover {
-            color: white !important;
+            color: var(--neon-green) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--neon-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
         }
         
         .hero-section {
@@ -80,11 +104,29 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             color: white;
             text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+            animation: flicker 4s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+                opacity: 0.8;
+            }
         }
         
         .section-padding {
@@ -94,7 +136,8 @@
         .section-title {
             position: relative;
             margin-bottom: 50px;
-            font-weight: 700;
+            font-weight: 900;
+            text-align: center;
         }
         
         .section-title::after {
@@ -105,7 +148,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--secondary-color);
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue), var(--neon-green));
         }
         
         .gallery-container {
@@ -113,8 +156,14 @@
             overflow: hidden;
             margin-bottom: 30px;
             border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(255, 45, 149, 0.5);
             cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--neon-pink), 0 0 35px var(--neon-blue);
         }
         
         .gallery-image {
@@ -134,7 +183,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(45deg, rgba(255, 45, 149, 0.8), rgba(0, 255, 102, 0.7));
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -155,6 +204,8 @@
             margin-bottom: 10px;
             transform: translateY(-20px);
             transition: transform 0.5s ease;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
         }
         
         .gallery-container:hover .gallery-title {
@@ -167,6 +218,7 @@
             transform: translateY(20px);
             transition: all 0.5s ease;
             transition-delay: 0.2s;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
         }
         
         .gallery-container:hover .gallery-desc {
@@ -180,17 +232,27 @@
             border-radius: 5px;
             margin-bottom: 30px;
             transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 45, 149, 0.3);
+            box-shadow: 0 0 15px rgba(255, 45, 149, 0.2);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 0 25px var(--neon-pink);
+            border: 1px solid var(--neon-pink);
         }
         
         .service-icon {
             font-size: 3rem;
-            color: var(--secondary-color);
+            color: var(--neon-blue);
             margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        .service-card h4 {
+            color: var(--neon-green);
+            margin-bottom: 15px;
         }
         
         .contact-info {
@@ -199,14 +261,16 @@
         
         .contact-icon {
             font-size: 1.5rem;
-            color: var(--secondary-color);
+            color: var(--neon-pink);
             margin-right: 15px;
+            text-shadow: 0 0 5px var(--neon-pink);
         }
         
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--dark-bg);
             color: white;
             padding: 60px 0 30px;
+            border-top: 1px solid var(--neon-blue);
         }
         
         .social-icons a {
@@ -217,25 +281,35 @@
         }
         
         .social-icons a:hover {
-            color: var(--secondary-color);
+            color: var(--neon-yellow);
+            text-shadow: 0 0 10px var(--neon-yellow);
         }
         
         .btn-primary {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            border: none;
             padding: 12px 30px;
             border-radius: 30px;
             font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 45, 149, 0.5);
         }
         
         .btn-primary:hover {
-            background-color: #c0392b;
-            border-color: #c0392b;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+            box-shadow: 0 0 25px var(--neon-pink), 0 0 35px var(--neon-purple);
+            transform: translateY(-3px);
         }
         
         .about-img {
             border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .about-img:hover {
+            box-shadow: 0 0 30px var(--neon-pink), 0 0 40px var(--neon-blue);
         }
         
         .hero-content {
@@ -243,13 +317,41 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        
+        .neon-text {
+            color: white;
+            text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+        }
+        
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: white;
+            border-radius: 5px;
+            padding: 12px 15px;
+        }
+        
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 45, 149, 0.5);
+            color: white;
+        }
+        
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .bg-light {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">FotoStudio</a>
+            <a class="navbar-brand" href="#">Gsisioso</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -284,9 +386,9 @@
         <div class="hero-overlay">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="display-3 fw-bold mb-4">Capturando Momentos Inolvidables</h1>
-                    <p class="lead mb-5">Fotografía profesional para bodas, retratos, eventos y más</p>
-                    <a href="#contacto" class="btn btn-primary btn-lg">Contáctame</a>
+                    <h1 class="display-3 fw-bold mb-4">CAPTURANDO MOMENTOS ÚNICOS</h1>
+                    <p class="lead mb-5 neon-text">Fotografía profesional con estilo neón y vibrante para tus eventos</p>
+                    <a href="#contacto" class="btn btn-primary btn-lg">¡Reserva tu sesión!</a>
                 </div>
             </div>
         </div>
@@ -297,36 +399,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-title">Mi Portafolio</h2>
-                    <p class="lead mb-5">Algunos de mis trabajos más recientes</p>
+                    <h2 class="section-title">PORTAFOLIO</h2>
+                    <p class="lead mb-5">Mis trabajos más vibrantes y llenos de energía</p>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Retrato" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fiesta neón" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h4 class="gallery-title">Retrato Artístico</h4>
-                            <p class="gallery-desc">Sesión en estudio con iluminación natural. Modelo: Ana López</p>
+                            <h4 class="gallery-title">FIESTA NEÓN</h4>
+                            <p class="gallery-desc">Sesión en club nocturno con iluminación ultravioleta y efectos especiales</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boda" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Concierto" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h4 class="gallery-title">Boda en la Playa</h4>
-                            <p class="gallery-desc">Ceremonia al atardecer en la costa de Barcelona. Una celebración íntima y romántica.</p>
+                            <h4 class="gallery-title">CONCIERTO ELECTRÓNICO</h4>
+                            <p class="gallery-desc">Cobertura de festival con luces láser y efectos de humo</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento corporativo" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Retrato urbano" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h4 class="gallery-title">Conferencia Tech</h4>
-                            <p class="gallery-desc">Cobertura completa del evento anual de innovación tecnológica en Madrid.</p>
+                            <h4 class="gallery-title">RETRATO URBANO</h4>
+                            <p class="gallery-desc">Sesión en calles nocturnas con graffiti y luces de neón de fondo</p>
                         </div>
                     </div>
                 </div>
@@ -334,26 +436,26 @@
                     <div class="gallery-container">
                         <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento social" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h4 class="gallery-title">Gala Benéfica</h4>
-                            <p class="gallery-desc">Evento anual de recaudación de fondos para la fundación Ayuda+.</p>
+                            <h4 class="gallery-title">GALA TEMÁTICA</h4>
+                            <p class="gallery-desc">Evento con decoración futurista y código de vestimenta neón</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Paisaje" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Deportes extremos" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h4 class="gallery-title">Amanecer en los Pirineos</h4>
-                            <p class="gallery-desc">Captura al amanecer durante una expedición de fotografía de naturaleza.</p>
+                            <h4 class="gallery-title">DEPORTES EXTREMOS</h4>
+                            <p class="gallery-desc">Sesión con iluminación LED en patinaje y ciclismo urbano nocturno</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1516487106395-f2d269d6a21c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Producto" class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Baile" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h4 class="gallery-title">Línea de Joyería</h4>
-                            <p class="gallery-desc">Fotografía de producto para catálogo de joyería fina con iluminación especializada.</p>
+                            <h4 class="gallery-title">SESIÓN DE BAILE</h4>
+                            <p class="gallery-desc">Captura de movimiento con light painting y trajes luminiscentes</p>
                         </div>
                     </div>
                 </div>
@@ -366,8 +468,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-title">Mis Servicios</h2>
-                    <p class="lead mb-5">Ofrezco una variedad de servicios fotográficos profesionales</p>
+                    <h2 class="section-title">SERVICIOS</h2>
+                    <p class="lead mb-5">Experiencia en fotografía con estilo vibrante y energético</p>
                 </div>
             </div>
             
@@ -375,28 +477,28 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-ring"></i>
+                            <i class="fas fa-music"></i>
                         </div>
-                        <h4>Bodas</h4>
-                        <p>Capturo los momentos más especiales de tu día con un enfoque artístico y discreto.</p>
+                        <h4>Eventos Nocturnos</h4>
+                        <p>Fotografía en clubes, conciertos y fiestas con iluminación especial y efectos neón.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-camera-retro"></i>
                         </div>
-                        <h4>Retratos</h4>
-                        <p>Sesiones individuales, familiares o para profesionales que necesitan una imagen corporativa.</p>
+                        <h4>Sesiones Neón</h4>
+                        <p>Retratos y sesiones grupales con iluminación ultravioleta, pintura fluorescente y efectos de luz.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-building"></i>
+                            <i class="fas fa-running"></i>
                         </div>
-                        <h4>Eventos Corporativos</h4>
-                        <p>Cobertura profesional de conferencias, inauguraciones y eventos de empresa.</p>
+                        <h4>Deportes Urbanos</h4>
+                        <p>Cobertura de eventos deportivos nocturnos con iluminación LED y técnicas de light painting.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -404,26 +506,26 @@
                         <div class="service-icon">
                             <i class="fas fa-glass-cheers"></i>
                         </div>
-                        <h4>Eventos Sociales</h4>
-                        <p>Fotografía de cumpleaños, aniversarios, fiestas y celebraciones especiales.</p>
+                        <h4>Fiestas Temáticas</h4>
+                        <p>Fotografía de eventos con decoración futurista y código de vestimenta luminiscente.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-mountain"></i>
+                            <i class="fas fa-paint-brush"></i>
                         </div>
-                        <h4>Paisajes</h4>
-                        <p>Impresionantes fotografías de paisajes naturales y urbanos para decoración.</p>
+                        <h4>Arte con Luz</h4>
+                        <p>Sesiones creativas con técnicas de light painting, larga exposición y efectos visuales.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-shopping-bag"></i>
+                            <i class="fas fa-video"></i>
                         </div>
-                        <h4>Productos</h4>
-                        <p>Fotografía profesional de productos para catálogos, e-commerce y publicidad.</p>
+                        <h4>Video Musical</h4>
+                        <p>Producción de videoclips con estética neón, efectos visuales y ambientación nocturna.</p>
                     </div>
                 </div>
             </div>
@@ -438,12 +540,12 @@
                     <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fotógrafo" class="img-fluid about-img">
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="section-title text-start">Sobre Mí</h2>
-                    <p class="lead">Hola, soy [Nombre del Fotógrafo]</p>
-                    <p>Con más de 10 años de experiencia en el mundo de la fotografía, me especializo en capturar momentos únicos y emociones auténticas. Mi enfoque combina técnica profesional con una sensibilidad artística que permite crear imágenes atemporales.</p>
-                    <p>Me formé en [Escuela/Universidad] y he trabajado con clientes de todo el mundo, desde particulares hasta grandes empresas. Mi trabajo ha sido publicado en revistas como [Nombre de Revista] y [Nombre de Revista].</p>
-                    <p>Creo que cada momento tiene su propia historia y me esfuerzo por contar esa historia a través de mis fotografías.</p>
-                    <a href="#contacto" class="btn btn-primary mt-3">Trabajemos Juntos</a>
+                    <h2 class="section-title text-start">SOBRE MÍ</h2>
+                    <p class="lead">Hola, soy Gsisioso</p>
+                    <p>Especialista en fotografía nocturna y de ambientes con iluminación neón. Mi pasión es capturar la energía y vibrancia de la vida nocturna a través de mi lente.</p>
+                    <p>Con más de 8 años de experiencia, he desarrollado técnicas únicas para trabajar con luz ultravioleta, LED y efectos especiales. Mi trabajo ha sido featured en revistas de música, festivales y eventos de moda alternativa.</p>
+                    <p>Mi objetivo es transformar cada momento en una experiencia visual impactante y llena de color.</p>
+                    <a href="#contacto" class="btn btn-primary mt-3">¡Trabajemos juntos!</a>
                 </div>
             </div>
         </div>
@@ -454,8 +556,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-title">Contacto</h2>
-                    <p class="lead mb-5">¿Listo para crear algo juntos? Contáctame</p>
+                    <h2 class="section-title">CONTACTO</h2>
+                    <p class="lead mb-5">¿Listo para crear algo increíble juntos? ¡Escríbeme!</p>
                 </div>
             </div>
             
@@ -469,20 +571,20 @@
                             <input type="email" class="form-control" placeholder="Correo electrónico" required>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Asunto">
+                            <input type="text" class="form-control" placeholder="Tipo de evento">
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
+                            <textarea class="form-control" rows="5" placeholder="Cuéntame sobre tu proyecto" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                     </form>
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt contact-icon"></i> Calle Principal 123, Ciudad, País</p>
-                        <p><i class="fas fa-phone contact-icon"></i> +34 123 456 789</p>
-                        <p><i class="fas fa-envelope contact-icon"></i> hola@fotostudio.com</p>
-                        <p><i class="fas fa-clock contact-icon"></i> Lunes a Viernes: 9:00 - 18:00</p>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> Calle Neón 123, Ciudad</p>
+                        <p><i class="fas fa-phone contact-icon"></i> +34 318 456 4459</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> hola@gsisioso.com</p>
+                        <p><i class="fas fa-clock contact-icon"></i> Disponible 24/7 para eventos</p>
                     </div>
                     <div class="mt-5">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.509306976043!2d2.173403215425832!3d41.38590197926425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f5ac0c3ed1%3A0x9b2d6c00fd9b5b0e!2sBarcelona!5e0!3m2!1ses!2ses!4v1623234567890!5m2!1ses!2ses" width="100%" height="250" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy"></iframe>
@@ -497,8 +599,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h3 class="text-white mb-4">FotoStudio</h3>
-                    <p>Fotografía profesional para capturar tus momentos más especiales con arte y creatividad.</p>
+                    <h3 class="text-white mb-4">Gsisioso</h3>
+                    <p>Fotografía profesional con estilo neón para capturar tus momentos más vibrantes y llenos de energía.</p>
                 </div>
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <h5 class="text-white mb-4">Enlaces Rápidos</h5>
@@ -514,16 +616,16 @@
                     <h5 class="text-white mb-4">Sígueme</h5>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
                     </div>
                 </div>
             </div>
             <hr class="mt-5 mb-4 border-light">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p class="small mb-0">&copy; 2023 FotoStudio. Todos los derechos reservados.</p>
+                    <p class="small mb-0">&copy; 2023 Gsisioso. Todos los derechos reservados.</p>
                 </div>
             </div>
         </div>
