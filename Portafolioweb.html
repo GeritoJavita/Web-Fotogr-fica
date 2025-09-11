@@ -3,68 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Fotográfico Gsisioso</title>
+    <title>Gsus Loiso - Fotografía</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-pink: #ff2d95;
-            --neon-blue: #0ff0fc;
-            --neon-green: #00ff66;
-            --neon-yellow: #ffef0f;
-            --neon-purple: #bf00ff;
-            --dark-bg: #0a0a0a;
-            --light-text: #ffffff;
+            --primary-dark: #0a0a0a;
+            --primary-light: #ffffff;
+            --accent-color: #d4af37;
+            --gray-dark: #1a1a1a;
+            --gray-light: #f8f8f8;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--light-text);
-            background-color: var(--dark-bg);
-            padding-top: 76px;
+            font-family: 'Raleway', sans-serif;
+            color: var(--primary-dark);
+            background-color: var(--primary-light);
             overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
         }
         
+        /* Navigation */
         .navbar {
-            background-color: rgba(10, 10, 10, 0.8) !important;
-            backdrop-filter: blur(10px);
-            transition: background-color 0.3s ease;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--neon-pink);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px 0;
+            transition: all 0.3s ease;
         }
         
         .navbar.navbar-scrolled {
-            background-color: rgba(10, 10, 10, 0.95) !important;
             padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .navbar-brand {
-            font-weight: 900;
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            color: var(--neon-pink) !important;
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            color: var(--primary-dark) !important;
         }
         
         .nav-link {
             font-weight: 500;
-            margin: 0 10px;
-            color: rgba(255, 255, 255, 0.8) !important;
-            transition: color 0.3s ease;
+            margin: 0 15px;
+            color: var(--primary-dark) !important;
+            transition: all 0.3s ease;
             position: relative;
         }
         
         .nav-link:hover {
-            color: var(--neon-green) !important;
+            color: var(--accent-color) !important;
         }
         
         .nav-link::after {
@@ -73,8 +67,8 @@
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 2px;
-            background-color: var(--neon-green);
+            height: 1px;
+            background-color: var(--accent-color);
             transition: width 0.3s ease;
         }
         
@@ -82,13 +76,16 @@
             width: 100%;
         }
         
+        /* Hero Section */
         .hero-section {
             height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
         }
         
-        .video-background {
+        .hero-image {
             position: absolute;
             top: 0;
             left: 0;
@@ -98,92 +95,147 @@
             z-index: -1;
         }
         
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            color: white;
+        .hero-content {
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
-            animation: flicker 4s infinite alternate;
+            font-weight: 400;
         }
         
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-                opacity: 0.8;
-            }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
         }
         
+        .btn-outline-dark {
+            border: 1px solid var(--primary-dark);
+            color: var(--primary-dark);
+            padding: 12px 30px;
+            border-radius: 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+        }
+        
+        /* Section Styles */
         .section-padding {
             padding: 100px 0;
         }
         
         .section-title {
-            position: relative;
             margin-bottom: 50px;
-            font-weight: 900;
             text-align: center;
         }
         
-        .section-title::after {
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue), var(--neon-green));
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-color);
         }
         
-        .gallery-container {
+        /* Marketing Section */
+        .marketing-section {
+            background-color: var(--gray-light);
+        }
+        
+        .marketing-content {
+            padding-right: 50px;
+        }
+        
+        .marketing-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        /* Videoclips Section */
+        .videoclips-container {
             position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
             margin-bottom: 30px;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(255, 45, 149, 0.5);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .gallery-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--neon-pink), 0 0 35px var(--neon-blue);
-        }
-        
-        .gallery-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
-        
-        .gallery-container:hover .gallery-image {
-            transform: scale(1.1);
-        }
-        
-        .gallery-overlay {
+        .videoclips-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(255, 45, 149, 0.8), rgba(0, 255, 102, 0.7));
+            border: none;
+        }
+        
+        .video-description {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* About Section */
+        .about-content {
+            padding-left: 50px;
+        }
+        
+        .about-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -194,164 +246,127 @@
             text-align: center;
         }
         
-        .gallery-container:hover .gallery-overlay {
+        .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
         
-        .gallery-title {
+        .portfolio-title {
             color: white;
             font-size: 1.5rem;
             margin-bottom: 10px;
-            transform: translateY(-20px);
-            transition: transform 0.5s ease;
-            font-weight: 700;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
         }
         
-        .gallery-container:hover .gallery-title {
-            transform: translateY(0);
-        }
-        
-        .gallery-desc {
+        .portfolio-desc {
             color: white;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-            transition-delay: 0.2s;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            font-size: 1rem;
+            font-weight: 300;
         }
         
-        .gallery-container:hover .gallery-desc {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .service-card {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 45, 149, 0.3);
-            box-shadow: 0 0 15px rgba(255, 45, 149, 0.2);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px var(--neon-pink);
-            border: 1px solid var(--neon-pink);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--neon-blue);
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        .service-card h4 {
-            color: var(--neon-green);
-            margin-bottom: 15px;
-        }
-        
+        /* Contact Section */
         .contact-info {
             margin-bottom: 30px;
         }
         
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
         .contact-icon {
-            font-size: 1.5rem;
-            color: var(--neon-pink);
+            font-size: 1.2rem;
+            color: var(--accent-color);
             margin-right: 15px;
-            text-shadow: 0 0 5px var(--neon-pink);
-        }
-        
-        footer {
-            background-color: var(--dark-bg);
-            color: white;
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--neon-blue);
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: var(--neon-yellow);
-            text-shadow: 0 0 10px var(--neon-yellow);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 500;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 45, 149, 0.5);
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
-            box-shadow: 0 0 25px var(--neon-pink), 0 0 35px var(--neon-purple);
-            transform: translateY(-3px);
-        }
-        
-        .about-img {
-            border-radius: 5px;
-            box-shadow: 0 0 20px var(--neon-blue);
-            transition: all 0.3s ease;
-        }
-        
-        .about-img:hover {
-            box-shadow: 0 0 30px var(--neon-pink), 0 0 40px var(--neon-blue);
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .neon-text {
-            color: white;
-            text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+            width: 20px;
+            text-align: center;
         }
         
         .form-control {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--neon-blue);
-            color: white;
-            border-radius: 5px;
+            border-radius: 0;
+            border: 1px solid #e0e0e0;
             padding: 12px 15px;
+            margin-bottom: 20px;
         }
         
         .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.15);
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 15px rgba(255, 45, 149, 0.5);
-            color: white;
+            box-shadow: none;
+            border-color: var(--accent-color);
         }
         
-        ::placeholder {
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-social {
+            margin-bottom: 25px;
+        }
+        
+        .social-icon {
+            color: var(--primary-light);
+            font-size: 1.2rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        .credits {
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
         }
         
-        .bg-light {
-            background-color: rgba(255, 255, 255, 0.05) !important;
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .marketing-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .about-content {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Gsisioso</a>
+            <a class="navbar-brand" href="#">Gsus Loiso</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -361,13 +376,16 @@
                         <a class="nav-link" href="#inicio">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portafolio</a>
+                        <a class="nav-link" href="#marketing">Marketing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#servicios">Servicios</a>
+                        <a class="nav-link" href="#videoclips">Videoclips</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Fotos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contacto">Contacto</a>
@@ -377,155 +395,60 @@
         </div>
     </nav>
 
-    <!-- Hero Section con Video -->
+    <!-- Hero Section -->
     <section id="inicio" class="hero-section">
-        <video autoplay muted loop playsinline class="video-background">
-            <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b47b5e33e8ca7a94&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
-            Tu navegador no soporta videos HTML5.
-        </video>
-        <div class="hero-overlay">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="display-3 fw-bold mb-4">CAPTURANDO MOMENTOS ÚNICOS</h1>
-                    <p class="lead mb-5 neon-text">Fotografía profesional con estilo neón y vibrante para tus eventos</p>
-                    <a href="#contacto" class="btn btn-primary btn-lg">¡Reserva tu sesión!</a>
+        <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80" alt="Fotografía profesional" class="hero-image">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Fotografía con alma y estilo</h1>
+                <p>Capturando momentos únicos que perduran para siempre</p>
+                <a href="#portfolio" class="btn btn-outline-dark">Ver portafolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Section -->
+    <section id="marketing" class="section-padding marketing-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="Trabajos de marketing" class="marketing-img">
+                </div>
+                <div class="col-lg-6 marketing-content">
+                    <div class="section-title">
+                        <h2>Marketing</h2>
+                    </div>
+                    <p>Desarrollo estrategias visuales innovadoras que conectan marcas con su audiencia. Mi enfoque combina creatividad fotográfica con visión de marketing para crear contenido que no solo se ve bien, sino que también genera resultados.</p>
+                    <p>Specializado en campañas para redes sociales, contenido de marca y fotografía comercial que destaca la esencia única de cada producto o servicio.</p>
+                    <p>Trabajo con empresas de diversos sectores para crear imágenes que cuentan historias, construyen identidad de marca y generan engagement con el público objetivo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section-padding">
+    <!-- Videoclips Section -->
+    <section id="videoclips" class="section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-title">PORTAFOLIO</h2>
-                    <p class="lead mb-5">Mis trabajos más vibrantes y llenos de energía</p>
-                </div>
+            <div class="section-title">
+                <h2>Videoclips</h2>
             </div>
-            
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fiesta neón" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h4 class="gallery-title">FIESTA NEÓN</h4>
-                            <p class="gallery-desc">Sesión en club nocturno con iluminación ultravioleta y efectos especiales</p>
-                        </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="videoclips-container">
+                        <iframe src="https://player.vimeo.com/video/370331493?color=ffffff&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-description">
+                        <h4>Proyecto Musical "Neón"</h4>
+                        <p>Videoclip realizado para banda local con iluminación experimental y técnicas de cine abstracto.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Concierto" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h4 class="gallery-title">CONCIERTO ELECTRÓNICO</h4>
-                            <p class="gallery-desc">Cobertura de festival con luces láser y efectos de humo</p>
-                        </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="videoclips-container">
+                        <iframe src="https://player.vimeo.com/video/128345925?color=ffffff&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Retrato urbano" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h4 class="gallery-title">RETRATO URBANO</h4>
-                            <p class="gallery-desc">Sesión en calles nocturnas con graffiti y luces de neón de fondo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Evento social" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h4 class="gallery-title">GALA TEMÁTICA</h4>
-                            <p class="gallery-desc">Evento con decoración futurista y código de vestimenta neón</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Deportes extremos" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h4 class="gallery-title">DEPORTES EXTREMOS</h4>
-                            <p class="gallery-desc">Sesión con iluminación LED en patinaje y ciclismo urbano nocturno</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="gallery-container">
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Baile" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h4 class="gallery-title">SESIÓN DE BAILE</h4>
-                            <p class="gallery-desc">Captura de movimiento con light painting y trajes luminiscentes</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="section-padding bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-title">SERVICIOS</h2>
-                    <p class="lead mb-5">Experiencia en fotografía con estilo vibrante y energético</p>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <h4>Eventos Nocturnos</h4>
-                        <p>Fotografía en clubes, conciertos y fiestas con iluminación especial y efectos neón.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-camera-retro"></i>
-                        </div>
-                        <h4>Sesiones Neón</h4>
-                        <p>Retratos y sesiones grupales con iluminación ultravioleta, pintura fluorescente y efectos de luz.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-running"></i>
-                        </div>
-                        <h4>Deportes Urbanos</h4>
-                        <p>Cobertura de eventos deportivos nocturnos con iluminación LED y técnicas de light painting.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-glass-cheers"></i>
-                        </div>
-                        <h4>Fiestas Temáticas</h4>
-                        <p>Fotografía de eventos con decoración futurista y código de vestimenta luminiscente.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h4>Arte con Luz</h4>
-                        <p>Sesiones creativas con técnicas de light painting, larga exposición y efectos visuales.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h4>Video Musical</h4>
-                        <p>Producción de videoclips con estética neón, efectos visuales y ambientación nocturna.</p>
+                    <div class="video-description">
+                        <h4>"Urbano" - Documental Musical</h4>
+                        <p>Exploración visual de la escena musical underground de la ciudad, filmado en localizaciones auténticas.</p>
                     </div>
                 </div>
             </div>
@@ -537,126 +460,166 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fotógrafo" class="img-fluid about-img">
+                    <img src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Gsus Loiso - Fotógrafo" class="about-img">
                 </div>
-                <div class="col-lg-6">
-                    <h2 class="section-title text-start">SOBRE MÍ</h2>
-                    <p class="lead">Hola, soy Gsisioso</p>
-                    <p>Especialista en fotografía nocturna y de ambientes con iluminación neón. Mi pasión es capturar la energía y vibrancia de la vida nocturna a través de mi lente.</p>
-                    <p>Con más de 8 años de experiencia, he desarrollado técnicas únicas para trabajar con luz ultravioleta, LED y efectos especiales. Mi trabajo ha sido featured en revistas de música, festivales y eventos de moda alternativa.</p>
-                    <p>Mi objetivo es transformar cada momento en una experiencia visual impactante y llena de color.</p>
-                    <a href="#contacto" class="btn btn-primary mt-3">¡Trabajemos juntos!</a>
+                <div class="col-lg-6 about-content">
+                    <div class="section-title">
+                        <h2>Sobre Mí</h2>
+                    </div>
+                    <p>Hola, soy Gsus Loiso, fotógrafo y creador visual con más de 8 años de experiencia especializado en capturar la esencia de momentos únicos y emociones auténticas.</p>
+                    <p>Mi enfoque combina técnica profesional con una sensibilidad artística que permite crear imágenes atemporales. Me formé en la escuela de artes visuales y he trabajado con clientes de todo el mundo, desde particulares hasta grandes marcas.</p>
+                    <p>Creo que cada momento tiene su propia historia y me esfuerzo por contar esa historia a través de mis fotografías, creando imágenes que trascienden el tiempo y se convierten en tesoros perdurables.</p>
+                    <a href="#contacto" class="btn btn-outline-dark">Trabajemos juntos</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="section-padding bg-light">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-padding bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-title">CONTACTO</h2>
-                    <p class="lead mb-5">¿Listo para crear algo increíble juntos? ¡Escríbeme!</p>
+            <div class="section-title">
+                <h2>Fotos Profesionales</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1554080353-321e452ccf19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1150&q=80" alt="Retratos">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Retratos</h3>
+                        <p class="portfolio-desc">Sesión de ret              <p class="portfolio-desc">Sesión de retratos en estudio con iluminación natural. Modelo: Ana López</p>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-lg-6">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Nombre completo" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Correo electrónico" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Tipo de evento">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Cuéntame sobre tu proyecto" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Bodas">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Boda en la Playa</h3>
+                    <p class="portfolio-desc">Ceremonia al atardecer en la costa de Barcelona. Una celebración íntima y romántica.</p>
                 </div>
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt contact-icon"></i> Calle Neón 123, Ciudad</p>
-                        <p><i class="fas fa-phone contact-icon"></i> +34 318 456 4459</p>
-                        <p><i class="fas fa-envelope contact-icon"></i> hola@gsisioso.com</p>
-                        <p><i class="fas fa-clock contact-icon"></i> Disponible 24/7 para eventos</p>
-                    </div>
-                    <div class="mt-5">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.509306976043!2d2.173403215425832!3d41.38590197926425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f5ac0c3ed1%3A0x9b2d6c00fd9b5b0e!2sBarcelona!5e0!3m2!1ses!2ses!4v1623234567890!5m2!1ses!2ses" width="100%" height="250" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Eventos">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Gala Benéfica</h3>
+                    <p class="portfolio-desc">Evento anual de recaudación de fondos para la fundación Ayuda+. Iluminación cálida y ambiente elegante.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Moda">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Colección Otoño</h3>
+                    <p class="portfolio-desc">Sesión de moda para diseñador local. Localización urbana con contraste de texturas.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1516487106395-f2d269d6a21c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Producto">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Línea de Joyería</h3>
+                    <p class="portfolio-desc">Fotografía de producto para catálogo de joyería fina con iluminación especializada y detalles precisos.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Paisaje">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">Amanecer en los Pirineos</h3>
+                    <p class="portfolio-desc">Captura al amanecer durante una expedición de fotografía de naturaleza. Luz dorada y atmósfera serena.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h3 class="text-white mb-4">Gsisioso</h3>
-                    <p>Fotografía profesional con estilo neón para capturar tus momentos más vibrantes y llenos de energía.</p>
-                </div>
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="text-white mb-4">Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#inicio" class="text-white text-decoration-none">Inicio</a></li>
-                        <li><a href="#portfolio" class="text-white text-decoration-none">Portafolio</a></li>
-                        <li><a href="#servicios" class="text-white text-decoration-none">Servicios</a></li>
-                        <li><a href="#sobre-mi" class="text-white text-decoration-none">Sobre Mí</a></li>
-                        <li><a href="#contacto" class="text-white text-decoration-none">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h5 class="text-white mb-4">Sígueme</h5>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-spotify"></i></a>
+<!-- Contact Section -->
+<section id="contacto" class="section-padding">
+    <div class="container">
+        <div class="section-title">
+            <h2>Contacto</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <form>
+                    <div class="mb-4">
+                        <input type="text" class="form-control" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" class="form-control" placeholder="Asunto">
+                    </div>
+                    <div class="mb-4">
+                        <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">Enviar Mensaje</button>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>Barcelona, España</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span>+34 318 456 4459</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>hola@gsusloiso.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <span>Lunes a Viernes: 9:00 - 18:00</span>
                     </div>
                 </div>
-            </div>
-            <hr class="mt-5 mb-4 border-light">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p class="small mb-0">&copy; 2023 Gsisioso. Todos los derechos reservados.</p>
+                <div class="mt-5">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119373.44083302078!2d2.039821368750009!3d41.39264690000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona!5e0!3m2!1ses!2ses!4v1685638953670!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <!-- Bootstrap & jQuery JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Smooth scrolling for navigation links
-        $(document).ready(function(){
-            $('a.nav-link').on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top - 70
-                    }, 800);
-                }
-            });
-            
-            // Navbar background change on scroll
-            $(window).scroll(function() {
-                if ($(window).scrollTop() > 50) {
-                    $('.navbar').addClass('navbar-scrolled');
-                } else {
-                    $('.navbar').removeClass('navbar-scrolled');
-                }
-            });
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-social">
+            <a href="https://www.instagram.com/gsusloiso/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p class="credits mb-0">&copy; 2023 Gsus Loiso. Todos los derechos reservados. | Realizado por geritodev</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap & jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Smooth scrolling for navigation links
+    $(document).ready(function(){
+        $('a.nav-link').on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 70
+                }, 800);
+            }
         });
-    </script>
-</body>
-</html>
+        
+        // Navbar background change on scroll
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 50) {
+                $('.navbar').addClass('navbar-scrolled');
+            } else {
+                $('.navbar').removeClass('navbar-scrolled');
+            }
+        });
+    });
+        </script>
+    </body>
+ </html>
